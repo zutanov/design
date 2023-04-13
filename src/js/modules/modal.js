@@ -109,7 +109,7 @@ const modal = () => {
     modalOpen('.button-design', '.popup-consultation', '.popup-consultation .popup-close');
     modalOpen('.fixed-gift', '.popup-gift', '.popup-gift .popup-close', true);
     openByScroll('.fixed-gift');
-    modalAutoOpen('.popup-consultation', 5000);
+   // modalAutoOpen('.popup-consultation', 5000);
 
 };
 
