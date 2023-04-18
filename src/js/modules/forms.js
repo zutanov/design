@@ -1,3 +1,4 @@
+import { postData } from "../services/requests";
 
 function forms() {
     const form = document.querySelectorAll('form'),       // получаем все формы на странице
@@ -12,15 +13,6 @@ function forms() {
         failure: 'assets/img/fail.png',
         spinner: 'assets/img/spinner.gif'
         };
-
-    const postData = async(url, data) => {
-        let res = await fetch(url, {
-            method: "POST",
-            body: data
-        });
-
-        return await res.text();
-    };
 
     const clearInputs = () => {
         inputs.forEach(el => el.value = '');
