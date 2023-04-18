@@ -4350,6 +4350,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_mask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/mask */ "./src/js/modules/mask.js");
 /* harmony import */ var _modules_checkInputText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/checkInputText */ "./src/js/modules/checkInputText.js");
 /* harmony import */ var _modules_showMoreStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/showMoreStyles */ "./src/js/modules/showMoreStyles.js");
+/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
+
 
 
 
@@ -4367,7 +4369,47 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_checkInputText__WEBPACK_IMPORTED_MODULE_4__["default"])("[name='name']");
   Object(_modules_checkInputText__WEBPACK_IMPORTED_MODULE_4__["default"])("[name='message']");
   Object(_modules_showMoreStyles__WEBPACK_IMPORTED_MODULE_5__["default"])('.button-styles', '#styles .row');
+  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])('#size', '#material', '#options', '.promocode', '.calc-price');
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/calc.js":
+/*!********************************!*\
+  !*** ./src/js/modules/calc.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var calc = function calc(size, material, options, promocode, price) {
+  var sizeBlock = document.querySelector(size),
+      materialBlock = document.querySelector(material),
+      optionsBlock = document.querySelector(options),
+      promocodeBlock = document.querySelector(promocode),
+      priceBlock = document.querySelector(price);
+  var sum = 0;
+
+  function calcPrice() {
+    sum = Math.round(+sizeBlock.value * +materialBlock.value + +optionsBlock.value);
+
+    if (sizeBlock.value == '' || materialBlock.value == '') {
+      priceBlock.textContent = 'Пожалуйста, выберите размер и материал картины';
+    } else if (promocodeBlock.value == 'IWANTPOPART') {
+      priceBlock.textContent = Math.round(sum * 0.7);
+    } else {
+      priceBlock.textContent = sum;
+    }
+  }
+
+  sizeBlock.addEventListener('change', calcPrice);
+  materialBlock.addEventListener('change', calcPrice);
+  optionsBlock.addEventListener('change', calcPrice);
+  promocodeBlock.addEventListener('input', calcPrice);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calc);
 
 /***/ }),
 
@@ -4747,9 +4789,7 @@ var showMoreStyles = function showMoreStyles(trigger, wrapper) {
       card.innerHTML = "\n                <div class=styles-block>\n                    <img src=".concat(src, " alt>\n                    <h4>").concat(title, "</h4>\n                    <a href=").concat(link, ">\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</a>\n                </div>\n            ");
       document.querySelector(wrapper).appendChild(card);
     });
-  } // <div class="hidden-lg hidden-md hidden-sm hidden-xs styles-2">
-  // </div>
-
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (showMoreStyles);

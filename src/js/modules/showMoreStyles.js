@@ -36,18 +36,6 @@ const showMoreStyles = (trigger, wrapper) => {
         });
 
     }
-
-
-
-
-        // <div class="hidden-lg hidden-md hidden-sm hidden-xs styles-2">
-
-        // </div>
-
-    
-
-
-
 };
 
 export default showMoreStyles;
