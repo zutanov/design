@@ -4410,6 +4410,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
 /* harmony import */ var _modules_filter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/filter */ "./src/js/modules/filter.js");
 /* harmony import */ var _modules_pictureSizes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/pictureSizes */ "./src/js/modules/pictureSizes.js");
+/* harmony import */ var _modules_accordion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/accordion */ "./src/js/modules/accordion.js");
+/* harmony import */ var _modules_burgerMenu__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/burgerMenu */ "./src/js/modules/burgerMenu.js");
 
 
 
@@ -4419,21 +4421,91 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-window.addEventListener('DOMContentLoaded', function () {
-  'use strict';
+
+
+window.addEventListener("DOMContentLoaded", function () {
+  "use strict";
 
   Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])('.feedback-slider-item', '', '.main-prev-btn', '.main-next-btn');
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])('.main-slider-item', 'vertical');
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])(".feedback-slider-item", "", ".main-prev-btn", ".main-next-btn");
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])(".main-slider-item", "vertical");
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_2__["default"])();
   Object(_modules_mask__WEBPACK_IMPORTED_MODULE_3__["default"])('[name="phone"]');
   Object(_modules_checkInputText__WEBPACK_IMPORTED_MODULE_4__["default"])("[name='name']");
   Object(_modules_checkInputText__WEBPACK_IMPORTED_MODULE_4__["default"])("[name='message']");
-  Object(_modules_showMoreStyles__WEBPACK_IMPORTED_MODULE_5__["default"])('.button-styles', '#styles .row');
-  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])('#size', '#material', '#options', '.promocode', '.calc-price');
+  Object(_modules_showMoreStyles__WEBPACK_IMPORTED_MODULE_5__["default"])(".button-styles", "#styles .row");
+  Object(_modules_calc__WEBPACK_IMPORTED_MODULE_6__["default"])("#size", "#material", "#options", ".promocode", ".calc-price");
   Object(_modules_filter__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_modules_pictureSizes__WEBPACK_IMPORTED_MODULE_8__["default"])('.sizes-block');
+  Object(_modules_pictureSizes__WEBPACK_IMPORTED_MODULE_8__["default"])(".sizes-block");
+  Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_9__["default"])(".accordion-heading", ".accordion-block");
+  Object(_modules_burgerMenu__WEBPACK_IMPORTED_MODULE_10__["default"])(".burger", ".burger-menu");
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/accordion.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/accordion.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var accordion = function accordion(triggersSelector, btnsSelector) {
+  var btns = document.querySelectorAll(triggersSelector),
+      blocks = document.querySelectorAll(btnsSelector);
+  blocks.forEach(function (el) {
+    el.classList.add("animated", "fadeInDown");
+  });
+  btns.forEach(function (el) {
+    el.addEventListener("click", function () {
+      if (!el.classList.contains("active")) {
+        btns.forEach(function (el) {
+          return el.classList.remove("active", "active-style");
+        });
+        el.classList.add("active", "active-style");
+      }
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (accordion);
+
+/***/ }),
+
+/***/ "./src/js/modules/burgerMenu.js":
+/*!**************************************!*\
+  !*** ./src/js/modules/burgerMenu.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var burgerMenu = function burgerMenu(burgerSelector, menuSelector) {
+  var btn = document.querySelector(burgerSelector),
+      menu = document.querySelector(menuSelector);
+  menu.style.display = "none";
+  btn.addEventListener("click", function () {
+    if (menu.style.display == "none" && window.screen.availWidth < 993) {
+      menu.style.display = "block";
+    } else {
+      menu.style.display = "none";
+    }
+  });
+  window.addEventListener("resize", function () {
+    if (window.screen.availWidth > 992) {
+      menu.style.display = "none";
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (burgerMenu);
 
 /***/ }),
 

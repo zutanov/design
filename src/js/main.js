@@ -7,18 +7,22 @@ import showMoreStyles from "./modules/showMoreStyles";
 import calc from "./modules/calc";
 import filter from "./modules/filter";
 import pictureSizes from "./modules/pictureSizes";
+import accordion from "./modules/accordion";
+import burgerMenu from "./modules/burgerMenu";
 
-window.addEventListener('DOMContentLoaded', () => {
-    'use strict';
-    modal();
-    slider('.feedback-slider-item', '', '.main-prev-btn', '.main-next-btn');
-    slider('.main-slider-item', 'vertical');
-    forms();
-    mask('[name="phone"]');
-    checkInputText("[name='name']");
-    checkInputText("[name='message']");
-    showMoreStyles('.button-styles', '#styles .row');
-    calc('#size', '#material', '#options', '.promocode', '.calc-price');
-    filter();
-    pictureSizes('.sizes-block')
-})
+window.addEventListener("DOMContentLoaded", () => {
+  "use strict";
+  modal();
+  slider(".feedback-slider-item", "", ".main-prev-btn", ".main-next-btn");
+  slider(".main-slider-item", "vertical");
+  forms();
+  mask('[name="phone"]');
+  checkInputText("[name='name']");
+  checkInputText("[name='message']");
+  showMoreStyles(".button-styles", "#styles .row");
+  calc("#size", "#material", "#options", ".promocode", ".calc-price");
+  filter();
+  pictureSizes(".sizes-block");
+  accordion(".accordion-heading", ".accordion-block");
+  burgerMenu(".burger", ".burger-menu");
+});
